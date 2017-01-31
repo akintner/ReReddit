@@ -14,6 +14,7 @@ RSpec.describe do
 
         click_link "Login"
         expect(page.status_code).to eq(200)
+        expect(page).to have_content "Welcome to ReReddit"
       end
     end
 
