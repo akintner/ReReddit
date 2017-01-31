@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  # http_basic_authenticate_with :name => "client_id", :password => "client_secret" 
+
   def create
     state = params["state"]
     code = params["code"]
@@ -6,7 +9,7 @@ class SessionsController < ApplicationController
     token = params["access_token"]
     user_data = Faraday.get("https://api.github.com/user?access_token=#{token}")
     auth = JSON.parse(user_data.body)
-
+    byebug
     user          = User.find_or_create_by(uid: auth["id"])
     user.username = auth["login"]
     user.uid      = auth["id"]
@@ -14,7 +17,7 @@ class SessionsController < ApplicationController
     user.save
     session[:user_id] = user.id
 
-    redirect_to dashboard_index_path
+    redirect_to dashboard_path
   end
 
 end

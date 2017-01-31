@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'rereddit#index'
   get '/auth/reddit', as: :reddit_login
   get '/auth/reddit/callback', to: 'sessions#create'
+  get 'dashboard', to: 'dashboard#index'
 end
