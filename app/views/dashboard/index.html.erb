@@ -1,1 +1,5 @@
 <h2>Welcome to ReReddit <%= current_user.username %></h2>
+
+<p>Your current Reddit data is: <%= @user[:name] %> with <strong><%= @user[:link_karma] + @user[:comment_karma] %></strong> Karma points</p>
+
+<button>Logout</button>

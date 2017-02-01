@@ -1,11 +1,6 @@
 class SessionsController < ApplicationController
 
-  # http_basic_authenticate_with :name => "client_id", :password => "client_secret" 
-
   def create
-    state = params["state"]
-    code = params["code"]
-   
     @response = request.env["omniauth.auth"]
     auth     = @response
     uid      = auth["uid"]
@@ -19,6 +14,11 @@ class SessionsController < ApplicationController
 
     session[:user_id] = user.id
     redirect_to dashboard_path
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to "/"
   end
 
 end
