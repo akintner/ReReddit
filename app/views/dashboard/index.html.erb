@@ -1,5 +1,17 @@
 <h2>Welcome to ReReddit <%= current_user.username %></h2>
 
-<p>Your current Reddit data is: <%= @user[:name] %> with <strong><%= @user[:link_karma] + @user[:comment_karma] %></strong> Karma points</p>
-
-<button>Logout</button>
+<p>Your current Reddit info: username <%= @user[:name] %> with <strong><%= @user[:link_karma] + @user[:comment_karma] %></strong> Karma points</p>
+<p>Gold Credit is   <%= @user[:gold_creddits] %></p>
+<p>Inbox Count is   <%= @user[:inbox_count] %></p>
+<p>User over 18?   <%= @user[:over_18] %></p>
+<p>User is a Reddit mod?   <%= @user[:is_mod] %></p>
+<br>
+<p><%= @user[:name] %> is subscribed to the following subreddits:</p>
+<% @subreddits.each do |subreddit| %>
+  <ul>
+    <li><%= subreddit.name %></li>
+    <li><%= subreddit.url %></li>
+  </ul>
+<% end %>
+<br>
+<button><a href='/logout'>Logout</a></button>
