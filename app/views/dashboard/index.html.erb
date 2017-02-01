@@ -9,8 +9,10 @@
 <p><%= @user[:name] %> is subscribed to the following subreddits:</p>
 <% @subreddits.each do |subreddit| %>
   <ul>
-    <li><%= subreddit.name %></li>
-    <li><%= subreddit.url %></li>
+    <li><%= subreddit.name %> -- <%= subreddit.url %></li>
+    <li><%= subreddit.description %></li>
+    <li>Total subscribers: <%= subreddit.total_subscribers %></li>
+    <li>Rules for submission: <%= subreddit.rules %></li>
   </ul>
 <% end %>
 <br>

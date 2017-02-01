@@ -38,6 +38,7 @@ RSpec.configure do |config|
     # a real object. This is generally recommended, and will default to
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
+    config.backtrace_exclusion_patterns << /\.rvm\/gems/
   end
 
   # This option will default to `:apply_to_host_groups` in RSpec 4 (and will
