@@ -2,9 +2,6 @@ require 'rails_helper'
 
 RSpec.describe do
   context 'user' do
-    before :each do 
-      Capybara.app = ReReddit::Application
-    end
 
     scenario 'can redirect to reddit OAuth' do
       VCR.use_cassette("oauth") do
