@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe do
   context 'user' do
 
-    scenario 'can redirect to reddit OAuth' do
+    scenario 'can redirect to reddit OAuth and log in' do
       VCR.use_cassette("oauth") do
         visit "/"
         stub_omniauth
@@ -22,15 +22,14 @@ RSpec.describe do
           provider: 'reddit',
           uid: "777",
           info: {
-            email: "akintner@u.rochester.edu",
             name: "Amz",
           },
           credentials: {
-            token: ENV["reddit_test_token"]
+            token: "jL8V66ds0TObGLLVt-KemPtntUM"
           }, 
           extra: {
             raw_info: {
-              login: "akintner" 
+              email: "akintner@u.rochester.edu",
             } 
           }
         } 

@@ -18,4 +18,16 @@ class Subreddit
   def url
     subreddit_data[:url]
   end
+
+  def description
+    subreddit_data[:public_description]
+  end
+  
+  def total_subscribers
+    subreddit_data[:subscribers]
+  end
+
+  def rules
+    subreddit_data[:submit_text]
+  end
 end
