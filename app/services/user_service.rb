@@ -5,6 +5,14 @@ class UserService
     JSON.parse(response.get.body, symbolize_names: true)
   end
 
+  def self.refresh_token(current_user)
+    conn = Faraday.new("https://www.reddit.com")
+    conn.basic_auth(ENV["REDDIT_CLIENT_ID"], ENV["REDDIT_CLIENT_SECRET"])
+    response = conn.post("/api/v1/access_token", grant_type: "refresh_token", refresh_token: current_user.refresh_token)
+    new_data = JSON.parse(response.body, symbolize_names: true)
+    user.update_attribute(:token, new_data[:access_token])
+  end
+
   def self.get_subreddits(current_user)
     response = authorized_user(current_user.token).get("/subreddits/mine/subscriber?limit=25")
     subreddits = JSON.parse(response.body, symbolize_names: true)
