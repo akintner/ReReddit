@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe do
   context 'user' do
-
     scenario 'can redirect to reddit OAuth and log in' do
       VCR.use_cassette("oauth") do
         visit "/"
@@ -30,6 +29,7 @@ RSpec.describe do
           extra: {
             raw_info: {
               email: "akintner@u.rochester.edu",
+              subreddit_data: "AWWW"
             } 
           }
         } 
