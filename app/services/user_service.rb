@@ -19,6 +19,15 @@ class UserService
     subreddits[:data][:children]
   end
 
+  def self.find_subreddit_by_name(subreddit_name)
+    response = Faraday.get("https://www.reddit.com/r/#{subreddit_name}/comments/")
+    response
+  end
+
+  def self.get_posts(subreddit)
+    subreddit
+  end
+
   private
     def self.authorized_user(token)
       response = Faraday.new("https://oauth.reddit.com")

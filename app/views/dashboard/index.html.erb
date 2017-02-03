@@ -13,6 +13,7 @@
     <li><%= subreddit.description %></li>
     <li>Total subscribers: <%= subreddit.total_subscribers %></li>
     <li>Rules for submission: <%= subreddit.rules %></li>
+    <li>Current top posts on this sub: <%= link_to "Top Posts", "/r/#{subreddit.name}/comments" %></li>
   </ul>
 <% end %>
 <br>

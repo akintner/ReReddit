@@ -1,5 +1,5 @@
 class Subreddit 
-  attr_reader :subreddit_data
+  attr_reader :subreddit_data, :url
   
   def initialize(subreddit_data)
     @subreddit_data = subreddit_data
@@ -10,6 +10,10 @@ class Subreddit
       new(subreddit[:data])
     end
   end
+
+  def self.find_url(subreddit_name)
+    UserService.find_subreddit_by_name(subreddit_name)
+  end  
 
   def name
     subreddit_data[:display_name]
